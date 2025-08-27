@@ -5,7 +5,7 @@ let jwt = require("jsonwebtoken");
 
 let createUser = (req, res) => {
   try {
-    let { name, email, password, role } = req.body;
+    let { name, email, password } = req.body;
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(password, salt, async (err, hash) => {
         let data = await collection.create({
@@ -13,6 +13,38 @@ let createUser = (req, res) => {
           email,
           password: hash,
           role: "user",
+        });
+
+        let token = jwt.sign(
+          {
+            _id: data.id,
+            email: data.email,
+            role: data.role,
+          },
+          process.env.JWT_KEY
+        );
+        res.cookie("token", token, { httpOnly: true });
+        res.status(201).json(data);
+      });
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// *============================================================
+
+let createAdmin = (req, res) => {
+  try {
+    let { name, email, password } = req.body;
+
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(password, salt, async (err, hash) => {
+        let data = await collection.create({
+          name,
+          email,
+          password: hash,
+          role: "admin",
         });
 
         let token = jwt.sign(
@@ -69,4 +101,4 @@ let login = async (req, res) => {
 
 // *============================================================
 
-module.exports = { createUser, login };
+module.exports = { createUser, login, createAdmin };

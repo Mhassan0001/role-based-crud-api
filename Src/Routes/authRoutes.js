@@ -1,6 +1,10 @@
 let express = require("express");
 let router = express.Router();
-let { createUser, login } = require("../Controllers/authController");
+let {
+  createUser,
+  login,
+  createAdmin,
+} = require("../Controllers/authController");
 let {
   authMiddleware,
   roleBaseMiddleware,
@@ -11,7 +15,7 @@ let {
 router.route("/create").post(createUser);
 router
   .route("/createAdmin")
-  .post(authMiddleware, roleBaseMiddleware("admin"), createUser);
+  .post(authMiddleware, roleBaseMiddleware("admin"), createAdmin);
 router.route("/login").post(login);
 
 // *============================================================
