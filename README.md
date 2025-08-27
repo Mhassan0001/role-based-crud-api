@@ -42,7 +42,7 @@ role-based-crud-api/
 
 ```
 
----
+
 
 ## ⚡ Getting Started
 
@@ -63,10 +63,13 @@ JWT_SECRET=your_secret_key
 # 4️⃣ Run the server
 npm start
 
+---
 
 ## 📡 API Endpoints
 
-#🔑 Auth Routes
+```bash
+
+# 🔑 Auth Routes
 
 POST   /auth/create        -> Register new user   (Public)
 POST   /auth/login         -> Login user & get JWT (Public)
@@ -81,6 +84,7 @@ GET    /rest/find/:id      -> Find record by ID    (Auth required)
 PUT    /rest/update/:id    -> Update record by ID  (Auth required)
 DELETE /rest/remove/:id    -> Delete record by ID  (Auth required)
 
+```
 
 👨‍💻 Author
 
