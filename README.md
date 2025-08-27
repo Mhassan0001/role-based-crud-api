@@ -64,9 +64,9 @@ JWT_SECRET=your_secret_key
 npm start
 
 
-📡 API Endpoints
+## 📡 API Endpoints
 
-🔑 Auth Routes
+#🔑 Auth Routes
 
 POST   /auth/create        -> Register new user   (Public)
 POST   /auth/login         -> Login user & get JWT (Public)
