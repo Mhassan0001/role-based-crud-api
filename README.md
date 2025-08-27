@@ -57,9 +57,9 @@ role-based-crud-api/
 
 ##### Create a .env file in root directory
 
-- PORT=5000
-- MONGO_URI=your_mongodb_uri
-- JWT_SECRET=your_secret_key
+- port=5000
+- MonogoUri=your_mongodb_uri
+- JWT_KEY=your_secret_key
 
 #### 4️⃣ Run the server
 
