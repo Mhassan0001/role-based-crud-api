@@ -26,10 +26,9 @@ This project provides a scalable backend structure for applications requiring **
 
 ---
 
-```bash
-
 ## 📂 Project Structure
 
+```bash
 role-based-crud-api/
  ├── src/
  │   ├── Controllers/
