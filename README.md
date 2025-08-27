@@ -46,28 +46,27 @@ role-based-crud-api/
 
 ## ⚡ Getting Started
 
-```bash
 # 1️⃣ Clone the repo
-git clone https://github.com/Mhassan0001/role-based-crud-api.git
-cd role-based-crud-api
+- git clone https://github.com/Mhassan0001/role-based-crud-api.git
+- cd role-based-crud-api
 
 # 2️⃣ Install dependencies
-npm install
+- npm install
 
 # 3️⃣ Setup environment variables
 # Create a .env file in root directory
-PORT=5000
-MONGO_URI=your_mongodb_uri
-JWT_SECRET=your_secret_key
+- PORT=5000
+- MONGO_URI=your_mongodb_uri
+- JWT_SECRET=your_secret_key
 
 # 4️⃣ Run the server
-npm start
+- npm start
 
----
+
 
 ## 📡 API Endpoints
 
-```bash
+
 
 # 🔑 Auth Routes
 
@@ -84,7 +83,7 @@ GET    /rest/find/:id      -> Find record by ID    (Auth required)
 PUT    /rest/update/:id    -> Update record by ID  (Auth required)
 DELETE /rest/remove/:id    -> Delete record by ID  (Auth required)
 
-```
+
 
 👨‍💻 Author
 
