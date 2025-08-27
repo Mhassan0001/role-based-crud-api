@@ -53,7 +53,7 @@ role-based-crud-api/
 #### 2️⃣ Install dependencies
 - npm install
 
-###$ 3️⃣ Setup environment variables
+#### 3️⃣ Setup environment variables
 
 ##### Create a .env file in root directory
 
@@ -98,7 +98,6 @@ DELETE /rest/remove/:id    -> Delete record by ID  (Auth required)
 
 ## 👨‍💻 Author
 
-- Hassan
-- 
-🔗 GitHub Profile
-
+- **Hassan**  
+  🔗 [GitHub Profile](https://github.com/Mhassan0001)  
+  🔗 [LinkedIn](https://www.linkedin.com/in/muhammad-hassan-36912a22b)
