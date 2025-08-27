@@ -42,7 +42,7 @@ role-based-crud-api/
 
 ```
 
-
+---
 
 ## ⚡ Getting Started
 
@@ -65,7 +65,7 @@ role-based-crud-api/
 
 - npm start
 
-
+---
 
 ## 📡 API Endpoints
 
@@ -94,6 +94,7 @@ DELETE /rest/remove/:id    -> Delete record by ID  (Auth required)
 
 ```
 
+---
 
 👨‍💻 Author
 
