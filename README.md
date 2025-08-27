@@ -28,15 +28,16 @@ This project provides a scalable backend structure for applications requiring **
 
 ## 📂 Project Structure
 
-├── Src
-│ ├── Controllers
-│ ├── Middleware
-│ ├── Models
-│ ├── Routes
-│ └── app.js
+role-based-crud-api/
+├── src/
+│   ├── Controllers/
+│   ├── Middleware/
+│   ├── Models/
+│   ├── Routes/
+│   ├── Db/
+│   └── app.js
 ├── package.json
-├── .gitignore
-└── README.md
+└── .gitignore
 
 
 ---
