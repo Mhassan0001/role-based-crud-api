@@ -54,12 +54,15 @@ role-based-crud-api/
 - npm install
 
 ### 3️⃣ Setup environment variables
-# Create a .env file in root directory
+
+##### Create a .env file in root directory
+
 - PORT=5000
 - MONGO_URI=your_mongodb_uri
 - JWT_SECRET=your_secret_key
 
 ### 4️⃣ Run the server
+
 - npm start
 
 
