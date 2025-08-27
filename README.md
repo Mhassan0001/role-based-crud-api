@@ -94,6 +94,8 @@ DELETE /rest/remove/:id    -> Delete record by ID  (Auth required)
 
 ```
 
+> ℹ️ Note: `find`, `update`, `remove` → User can only access own records, while **Admin** can access any record.
+
 ---
 
 ## 👨‍💻 Author
