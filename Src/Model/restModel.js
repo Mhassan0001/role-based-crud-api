@@ -1,5 +1,7 @@
 let mongoose = require("mongoose");
 
+// *============================================================
+
 let schema = mongoose.Schema(
   {
     title: {
@@ -26,6 +28,10 @@ let schema = mongoose.Schema(
   { timestamps: true }
 );
 
+// *============================================================
+
 let collection = mongoose.model("RestModelCollection", schema);
+
+// *============================================================
 
 module.exports = collection;
