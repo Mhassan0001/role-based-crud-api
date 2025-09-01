@@ -1,7 +1,17 @@
 let express = require("express");
 let router = express.Router();
+// *============================================================
 
-let { authMiddleware,roleBaseMiddleware } = require("../Middlewares/authMiddleware");
+//todo  Middleware Require
+
+let {
+  authMiddleware,
+  roleBaseMiddleware,
+} = require("../Middlewares/authMiddleware");
+
+// *============================================================
+
+//todo  Controller's Require
 
 let {
   check,
@@ -14,12 +24,52 @@ let {
 
 // *============================================================
 
+//todo  Rest-Validation Require
+
+let {
+  createValidation,
+  updateValidation,
+  removeValidation,
+  findOneValidation,
+} = require("../Validation/restValidation");
+
+// *============================================================
+
+//todo  ValidateRequest-Middleware Require
+
+let { validateRequest } = require("../Middlewares/validateRequest");
+
+// *============================================================
+
 router.route("/check").get(check);
-router.route("/create").post(authMiddleware, create);
+
+// ?============================================================
+
+router
+  .route("/create")
+  .post(createValidation, validateRequest, authMiddleware, create);
+
+// ?============================================================
+
 router.route("/read").get(authMiddleware, read);
-router.route("/update/:id").put(authMiddleware, update);
-router.route("/remove/:id").delete(authMiddleware, remove);
-router.route("/find/:id").get(authMiddleware, findOne);
+
+// ?============================================================
+
+router
+  .route("/update/:id")
+  .put(updateValidation, validateRequest, authMiddleware, update);
+
+// ?============================================================
+
+router
+  .route("/remove/:id")
+  .delete(removeValidation, validateRequest, authMiddleware, remove);
+
+// todo============================================================
+
+router
+  .route("/find/:id")
+  .get(findOneValidation, validateRequest, authMiddleware, findOne);
 
 // *============================================================
 
