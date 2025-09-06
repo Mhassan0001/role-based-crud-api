@@ -2,6 +2,7 @@
   "name": "user-friendly",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": " node --watch src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,5 +19,9 @@
     "express-validator": "^7.2.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.17.1"
-  }
+  },
+  "devDependencies": {
+    "eslint": "^9.35.0"
+  },
+  "_comment": "type:module add kiya taake Node/ESLint 'import' ko samajh saken 1st-portion-may"
 }
