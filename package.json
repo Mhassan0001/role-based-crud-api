@@ -8,10 +8,19 @@
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb",
+    "backend",
+    "rest-api",
+    "jwt",
+    "authentication",
+    "eslint"
+  ],
+  "author": "Muhammad Hassan",
   "license": "ISC",
-  "description": "",
+  "description": "RESTful backend project with ESLint setup and role-based CRUD operations.",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
