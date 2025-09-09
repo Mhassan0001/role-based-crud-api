@@ -24,12 +24,24 @@ let read = async (req, res) => {
   try {
     //Todo - Working On Pagination-Branch
     let userId = req.user.userId;
+    let page = parseInt(req.query.page) || 1;
+    let limit = parseInt(req.query.limit) || 10;
+    let skip = (page - 1) * limit;
+    //  ?============================================
+    let data;
+    let totalItems;
+    let totalPages;
+    //  ?============================================
     if (req.user.role === "admin") {
-      let data = await collection.find();
-      res.status(200).json(data);
+      totalItems = await collection.countDocuments();
+      totalPages = Math.ceil(totalItems / limit);
+      data = await collection.find().skip(skip).limit(limit);
+      res.status(200).json({ data, page, limit, totalItems, totalPages });
     } else {
-      let data = await collection.find({ userId });
-      res.status(200).json(data);
+      totalItems = await collection.countDocuments({ userId });
+      totalPages = Math.ceil(totalItems / limit);
+      data = await collection.find({ userId }).skip(skip).limit(limit);
+      res.status(200).json({ data, page, limit, totalItems, totalPages });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });

@@ -1,6 +1,4 @@
-import { defineConfig } from "eslint/config";
-
-export default defineConfig([
+module.exports = [
   {
     files: ["**/*.js"],
     rules: {
@@ -9,4 +7,4 @@ export default defineConfig([
       quotes: ["error", "double"],
     },
   },
-]);
+];

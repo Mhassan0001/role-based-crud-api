@@ -2,7 +2,6 @@
   "name": "user-friendly",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "dev": " node --watch src/app.js",
     "lint": "eslint .",
@@ -32,6 +31,6 @@
   },
   "devDependencies": {
     "eslint": "^9.35.0"
-  },
-  "_comment": "type:module add kiya taake Node/ESLint 'import' ko samajh saken 1st-portion-may"
+  }
+ 
 }
