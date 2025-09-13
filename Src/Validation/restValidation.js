@@ -1,4 +1,4 @@
-let { body, param } = require("express-validator");
+let { body, param, query } = require("express-validator");
 
 //* ========================================================
 
@@ -16,6 +16,30 @@ let createValidation = [
     .withMessage("CreatedBy is Required")
     .isLength({ min: 3 })
     .withMessage("Must be at least 3 characters long"),
+];
+
+//* ========================================================
+
+let queryValidation = [
+  query("page")
+    .optional()
+    .isInt({ min: 1 })
+    .withMessage("Page must be a positve Integer"),
+
+  query("limit")
+    .optional()
+    .isInt({ min: 1, max: 100 })
+    .withMessage("limit must be between 1 - 100"),
+
+  query("sortField")
+    .optional()
+    .isIn(["title", "content", "createdBy"])
+    .withMessage("Sort field must be title, createdBy, or createdAt"),
+
+  query("sortOrder")
+    .optional()
+    .isIn(["asc", "desc"])
+    .withMessage("sortOrder must be asc or dec"),
 ];
 
 //* ========================================================
@@ -71,4 +95,5 @@ module.exports = {
   updateValidation,
   removeValidation,
   findOneValidation,
+  queryValidation,
 };

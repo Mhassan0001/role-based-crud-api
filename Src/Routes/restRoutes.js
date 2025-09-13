@@ -31,6 +31,7 @@ let {
   updateValidation,
   removeValidation,
   findOneValidation,
+  queryValidation,
 } = require("../Validation/restValidation");
 
 // *============================================================
@@ -51,7 +52,9 @@ router
 
 // ?============================================================
 
-router.route("/read").get(authMiddleware, read);
+router
+  .route("/read")
+  .get(queryValidation, validateRequest, authMiddleware, read);
 
 // ?============================================================
 
