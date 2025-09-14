@@ -14,7 +14,7 @@ let port = process.env.PORT || 9000;
 // *============================================================
 
 app.get("/", (req, res) => {
-  res.send(" Checking Successfully.....");
+  res.json({ msg: " Welcome to Role-Based CRUD API 🚀......" });
 });
 
 // ?============================================================
