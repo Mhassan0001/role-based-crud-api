@@ -34,12 +34,27 @@ let queryValidation = [
   query("sortField")
     .optional()
     .isIn(["title", "content", "createdBy"])
-    .withMessage("Sort field must be title, createdBy, or createdAt"),
+    .withMessage("Sort field must be title, createdBy, or content"),
 
   query("sortOrder")
     .optional()
     .isIn(["asc", "desc"])
     .withMessage("sortOrder must be asc or dec"),
+
+  query("title")
+    .optional()
+    .isLength({ min: 3 })
+    .withMessage("title must be 3 Character lon long"),
+
+  query("content")
+    .optional()
+    .isLength({ min: 3 })
+    .withMessage("content must be 3 Character long"),
+
+  query("createdBy")
+    .optional()
+    .isLength({ min: 3 })
+    .withMessage("createdBy must be 3 Character lon long"),
 ];
 
 //* ========================================================
