@@ -42,7 +42,7 @@ let read = async (req, res) => {
     if (req.query.createdBy) filter.createdBy = req.query.createdBy;
     //  ?============================================
     if (req.user.role === "admin") {
-      totalItems = await collection.countDocuments();
+      totalItems = await collection.countDocuments(filter);
       totalPages = Math.ceil(totalItems / limit);
       data = await collection
         .find(filter)
