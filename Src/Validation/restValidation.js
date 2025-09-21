@@ -65,28 +65,27 @@ let queryValidation = [
     .optional()
     .isLength({ min: 3 })
     .withMessage("createdBy must be 3 Character lon long"),
+
+  //todo==================================
+
+  //! Searching-Validations
+
+  query("searchTitle")
+    .optional()
+    .isString()
+    .withMessage("searchTitle must be a string")
+    .isLength({ min: 3, max: 50 })
+    .withMessage("searchTitle must be between 3 and 50 Character long")
+    .trim(),
+
+  query("searchContent")
+    .optional()
+    .isString()
+    .withMessage("searchContent must be a string")
+    .isLength({ min: 3, max: 50 })
+    .withMessage("serachContent must be between 3 and 50 Character long")
+    .trim(),
 ];
-
-//todo==================================
-
-//! Searching-Validations
-
-query("searchTitle")
-  .optional()
-  .isString()
-  .withMessage("searchTitle must be a string")
-  .isLength({ min: 3, max: 50 })
-  .withMessage("searchTitle must be between 3 and 50 Character long")
-  .trim();
-
-query("searchContent")
-  .optional()
-  .isString()
-  .withMessage("searchContent must be a string")
-  .isLength({ min: 3, max: 50 })
-  .withMessage("serachContent must be between 3 and 50 Character long")
-  .trim();
-
 //* ========================================================
 
 let updateValidation = [
