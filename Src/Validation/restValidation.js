@@ -21,6 +21,8 @@ let createValidation = [
 //* ========================================================
 
 let queryValidation = [
+  //! Pagination-Validations
+
   query("page")
     .optional()
     .isInt({ min: 1 })
@@ -31,17 +33,59 @@ let queryValidation = [
     .isInt({ min: 1, max: 100 })
     .withMessage("limit must be between 1 - 100"),
 
+  //todo==================================
+
+  //! Sorting-Validations
+
   query("sortField")
     .optional()
     .isIn(["title", "content", "createdBy"])
-    .withMessage("Sort field must be title, createdBy, or createdAt"),
+    .withMessage("Sort field must be title, createdBy, or content"),
 
   query("sortOrder")
     .optional()
     .isIn(["asc", "desc"])
     .withMessage("sortOrder must be asc or dec"),
-];
 
+  //todo==================================
+
+  //! Filtering-Validations
+
+  query("title")
+    .optional()
+    .isLength({ min: 3 })
+    .withMessage("title must be 3 Character long"),
+
+  query("content")
+    .optional()
+    .isLength({ min: 3 })
+    .withMessage("content must be 3 Character long"),
+
+  query("createdBy")
+    .optional()
+    .isLength({ min: 3 })
+    .withMessage("createdBy must be 3 Character lon long"),
+
+  //todo==================================
+
+  //! Searching-Validations
+
+  query("searchTitle")
+    .optional()
+    .isString()
+    .withMessage("searchTitle must be a string")
+    .isLength({ min: 3, max: 50 })
+    .withMessage("searchTitle must be between 3 and 50 Character long")
+    .trim(),
+
+  query("searchContent")
+    .optional()
+    .isString()
+    .withMessage("searchContent must be a string")
+    .isLength({ min: 3, max: 50 })
+    .withMessage("serachContent must be between 3 and 50 Character long")
+    .trim(),
+];
 //* ========================================================
 
 let updateValidation = [
