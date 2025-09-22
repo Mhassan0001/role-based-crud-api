@@ -12,8 +12,14 @@ This project provides a scalable backend structure for applications requiring **
 - 📦 CRUD operations for users/data
 - 🛡️ Protected routes & authorization middleware
 - 🌍 MongoDB Atlas integration with **Mongoose**
-- ⚡ Error handling & validation
-
+ - ⚡ Error handling & validation
+   
+## 🔍 Advanced Query Features
+- ✅ Input validation with **Express Validator**
+- 📄 Pagination
+- 🔃 Sorting
+- 🎯 Filtering
+- 🔍 Searching
 ---
 
 ## 🛠️ Tech Stack
@@ -23,6 +29,7 @@ This project provides a scalable backend structure for applications requiring **
 - **Mongoose**
 - **JWT (JSON Web Token)**
 - **bcrypt**
+- **express-validator**
 
 ---
 
