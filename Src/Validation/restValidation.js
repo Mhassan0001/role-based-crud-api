@@ -103,7 +103,7 @@ let updateValidation = [
   body("createdBy")
     .optional()
     .notEmpty()
-    .withMessage("createdByis Required")
+    .withMessage("createdsByis Required")
     .isLength({ min: 3 })
     .withMessage("Must be at least 3 characters long"),
 

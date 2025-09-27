@@ -9,8 +9,13 @@ let check = (req, res) => {
 
 let create = async (req, res) => {
   try {
+    let filePath = req.file ? req.file.path : null;
     let userId = req.user.userId;
-    let data = await collection.create({ ...req.body, userId });
+    let data = await collection.create({
+      ...req.body,
+      userId,
+      files: filePath,
+    });
     res.status(201).json(data);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -86,7 +91,17 @@ let update = async (req, res) => {
     let userId = req.user.userId;
     let _id = req.params.id;
     let role = req.user.role;
+
     let filter = role === "admin" ? { _id } : { _id, userId };
+    let oldRecord = await collection.findOne(filter);
+    if (req.file) {
+
+      if (oldRecord && oldRecord.files) {
+        let oldRecordPath = oldRecord.files;
+        if(oldRecordPath.fs){}
+      }
+
+    }
     let data = await collection.findOneAndUpdate(filter, req.body, {
       new: true,
       runValidators: true,

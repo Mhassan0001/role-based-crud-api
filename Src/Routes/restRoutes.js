@@ -4,10 +4,11 @@ let router = express.Router();
 
 //todo  Middleware Require
 
-let {
-  authMiddleware,
-  roleBaseMiddleware,
-} = require("../Middlewares/authMiddleware");
+let { authMiddleware } = require("../Middlewares/authMiddleware");
+
+// *============================================================
+
+let upload = require("../Middlewares/uploadMiddleware");
 
 // *============================================================
 
@@ -48,7 +49,13 @@ router.route("/check").get(check);
 
 router
   .route("/create")
-  .post(createValidation, validateRequest, authMiddleware, create);
+  .post(
+    authMiddleware,
+    upload.single("file"),
+    createValidation,
+    validateRequest,
+    create
+  );
 
 // ?============================================================
 
@@ -58,9 +65,13 @@ router
 
 // ?============================================================
 
-router
-  .route("/update/:id")
-  .put(updateValidation, validateRequest, authMiddleware, update);
+router.route("/update/:id").put(
+  authMiddleware,
+  upload.single("file"),
+  updateValidation,
+  validateRequest,
+  update
+);
 
 // ?============================================================
 
