@@ -24,6 +24,11 @@ let schema = mongoose.Schema(
       required: true,
       ref: "AuthModelCollection",
     },
+
+    files: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );

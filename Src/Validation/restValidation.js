@@ -103,14 +103,19 @@ let updateValidation = [
   body("createdBy")
     .optional()
     .notEmpty()
-    .withMessage("createdByis Required")
+    .withMessage("createdsByis Required")
     .isLength({ min: 3 })
     .withMessage("Must be at least 3 characters long"),
 
   //? ==============================================
   //! This Fx get data from Postman
   (req, res, next) => {
-    if (!req.body.title && !req.body.content && !req.body.createdBy) {
+    if (
+      !req.body.title &&
+      !req.body.content &&
+      !req.body.createdBy &&
+      !req.file
+    ) {
       return res.status(400).json({ err: "At least One Field Required " });
     }
 
