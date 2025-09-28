@@ -103,7 +103,7 @@ let update = async (req, res) => {
         const oldRecordPath = path.join(
           __dirname,
           "../upload",
-          oldRecord.files
+          path.basename(oldRecord.files)
         );
         if (fs.existsSync(oldRecordPath)) {
           try {
