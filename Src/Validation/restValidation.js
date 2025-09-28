@@ -110,7 +110,12 @@ let updateValidation = [
   //? ==============================================
   //! This Fx get data from Postman
   (req, res, next) => {
-    if (!req.body.title && !req.body.content && !req.body.createdBy) {
+    if (
+      !req.body.title &&
+      !req.body.content &&
+      !req.body.createdBy &&
+      !req.file
+    ) {
       return res.status(400).json({ err: "At least One Field Required " });
     }
 

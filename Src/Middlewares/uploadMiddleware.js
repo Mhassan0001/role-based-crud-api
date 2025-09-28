@@ -11,6 +11,21 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
+const upload = multer({
+  storage,
+  limits: { fileSize: 1024 * 1024 * 2 },
+  fileFilter: (req, file, cb) => {
+    const allowedExt = /\.(jpeg|png|gif|jpg)$/;
+    const allowedMime = /^image\/(jpeg|png|gif|jpg)$/;
+    const ext = path.extname(file.originalname).toLowerCase();
+    const mime = file.mimetype;
+
+    if (allowedExt.test(ext) && allowedMime.test(mime)) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only Images Allowed:jpeg,jpg,png,gif"), false);
+    }
+  },
+});
 
 module.exports = upload;

@@ -1,20 +1,22 @@
 let collection = require("../Model/restModel");
+let fs = require("fs");
+let path = require("path");
 // *============================================================
 
 let check = (req, res) => {
   res.status(200).json({ msg: "Controller Working" });
 };
 
-// ?============================================================
+// *============================================================
 
 let create = async (req, res) => {
   try {
-    let filePath = req.file ? req.file.path : null;
+    let filename = req.file ? req.file.filename : null;
     let userId = req.user.userId;
     let data = await collection.create({
       ...req.body,
       userId,
-      files: filePath,
+      files: filename,
     });
     res.status(201).json(data);
   } catch (error) {
@@ -59,6 +61,7 @@ let read = async (req, res) => {
     }
 
     //  ?============================================
+
     if (req.user.role === "admin") {
       totalItems = await collection.countDocuments(filter);
       totalPages = Math.ceil(totalItems / limit);
@@ -84,7 +87,7 @@ let read = async (req, res) => {
   }
 };
 
-// ?============================================================
+// *============================================================
 
 let update = async (req, res) => {
   try {
@@ -94,18 +97,34 @@ let update = async (req, res) => {
 
     let filter = role === "admin" ? { _id } : { _id, userId };
     let oldRecord = await collection.findOne(filter);
+
     if (req.file) {
-
       if (oldRecord && oldRecord.files) {
-        let oldRecordPath = oldRecord.files;
-        if(oldRecordPath.fs){}
+        const oldRecordPath = path.join(
+          __dirname,
+          "../upload",
+          oldRecord.files
+        );
+        if (fs.existsSync(oldRecordPath)) {
+          try {
+            await fs.promises.unlink(oldRecordPath);
+          } catch (error) {
+            console.log("file Delete Error", error);
+          }
+        }
       }
-
     }
-    let data = await collection.findOneAndUpdate(filter, req.body, {
-      new: true,
-      runValidators: true,
-    });
+
+    let filename = req.file ? req.file.filename : oldRecord.files;
+
+    let data = await collection.findOneAndUpdate(
+      filter,
+      { ...req.body, files: filename },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -120,13 +139,30 @@ let remove = async (req, res) => {
     let _id = req.params.id;
     let role = req.user.role;
     let filter = role === "admin" ? { _id } : { _id, userId };
+    let oldRecord = await collection.findOne(filter);
+
+    if (oldRecord && oldRecord.files) {
+      const oldRecordPath = path.join(
+        __dirname,
+        "../upload",
+        path.basename(oldRecord.files)
+      );
+      if (fs.existsSync(oldRecordPath)) {
+        try {
+          await fs.promises.unlink(oldRecordPath);
+        } catch (error) {
+          console.log("File not Delete", error);
+        }
+      }
+    }
+
     let data = await collection.findOneAndDelete(filter);
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
-// ?============================================================
+// *============================================================
 
 let findOne = async (req, res) => {
   try {
