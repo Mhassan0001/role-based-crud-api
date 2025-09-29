@@ -1,7 +1,7 @@
 # 🚀 Role-Based CRUD API
 
-A **Node.js, Express, and MongoDB** based REST API that implements **Role-Based Access Control (RBAC)** with secure authentication using **JWT**.  
-This project provides a scalable backend structure for applications requiring **user management, authorization, and protected routes**.
+A **Node.js, Express, and MongoDB** based REST API that implements **Role-Based Access Control (RBAC)** with secure authentication using JWT.
+This project provides a scalable backend structure for applications **requiring user management, authorization, protected routes, and file uploads**.
 
 ---
 
@@ -12,7 +12,7 @@ This project provides a scalable backend structure for applications requiring **
 - 📦 CRUD operations for users/data
 - 🛡️ Protected routes & authorization middleware
 - 🌍 MongoDB Atlas integration with **Mongoose**
- - ⚡ Error handling & validation
+- ⚡ Error handling & validation
    
 ## 🔍 Advanced Query Features
 - ✅ Input validation with **Express Validator**
@@ -30,6 +30,7 @@ This project provides a scalable backend structure for applications requiring **
 - **JWT (JSON Web Token)**
 - **bcrypt**
 - **express-validator**
+- **Multer (Local Storage)**
 
 ---
 
