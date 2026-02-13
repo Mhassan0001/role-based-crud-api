@@ -1,9 +1,10 @@
 {
   "name": "user-friendly",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "dev": " node --watch src/app.js",
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js",
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
